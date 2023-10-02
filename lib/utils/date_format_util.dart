@@ -341,15 +341,7 @@ const List<String> monthLong = const <String>[
   'December'
 ];
 
-const List<String> dayShort = const [
-  'Mon',
-  'Tue',
-  'Wed',
-  'Thur',
-  'Fri',
-  'Sat',
-  'Sun'
-];
+const List<String> dayShort = const ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
 
 const List<String> dayLong = const [
   'Monday',
@@ -361,5 +353,4 @@ const List<String> dayLong = const [
   'Sunday'
 ];
 
-int dayInYear(DateTime date) =>
-    date.difference(DateTime(date.year, 1, 1)).inDays;
+int dayInYear(DateTime date) => date.difference(DateTime(date.year, 1, 1)).inDays;

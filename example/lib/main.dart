@@ -57,12 +57,10 @@ class _MyHomePageState extends State<MyHomePage> {
       final parseJson = json.decode(result);
       final tick = parseJson['tick'] as Map<String, dynamic>;
       final List<DepthEntity> bids = (tick['bids'] as List<dynamic>)
-          .map<DepthEntity>(
-              (item) => DepthEntity(item[0] as double, item[1] as double))
+          .map<DepthEntity>((item) => DepthEntity(item[0] as double, item[1] as double))
           .toList();
       final List<DepthEntity> asks = (tick['asks'] as List<dynamic>)
-          .map<DepthEntity>(
-              (item) => DepthEntity(item[0] as double, item[1] as double))
+          .map<DepthEntity>((item) => DepthEntity(item[0] as double, item[1] as double))
           .toList();
       initDepth(bids, asks);
     });
@@ -114,7 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
               volHidden: _volHidden,
               secondaryState: _secondaryState,
               fixedLength: 2,
-              timeFormat: TimeFormat.YEAR_MONTH_DAY,
+              timeFormat: TimeFormat.YEAR_MONTH_DAY_WITH_HOUR,
               translations: kChartTranslations,
               showNowPrice: _showNowPrice,
               //`isChinese` is Deprecated, Use `translations` instead.
@@ -153,23 +151,15 @@ class _MyHomePageState extends State<MyHomePage> {
         button("Line:MA", onPressed: () => _mainState = MainState.MA),
         button("Line:BOLL", onPressed: () => _mainState = MainState.BOLL),
         button("Hide Line", onPressed: () => _mainState = MainState.NONE),
-        button("Secondary Chart:MACD",
-            onPressed: () => _secondaryState = SecondaryState.MACD),
-        button("Secondary Chart:KDJ",
-            onPressed: () => _secondaryState = SecondaryState.KDJ),
-        button("Secondary Chart:RSI",
-            onPressed: () => _secondaryState = SecondaryState.RSI),
-        button("Secondary Chart:WR",
-            onPressed: () => _secondaryState = SecondaryState.WR),
-        button("Secondary Chart:CCI",
-            onPressed: () => _secondaryState = SecondaryState.CCI),
-        button("Secondary Chart:Hide",
-            onPressed: () => _secondaryState = SecondaryState.NONE),
-        button(_volHidden ? "Show Vol" : "Hide Vol",
-            onPressed: () => _volHidden = !_volHidden),
+        button("Secondary Chart:MACD", onPressed: () => _secondaryState = SecondaryState.MACD),
+        button("Secondary Chart:KDJ", onPressed: () => _secondaryState = SecondaryState.KDJ),
+        button("Secondary Chart:RSI", onPressed: () => _secondaryState = SecondaryState.RSI),
+        button("Secondary Chart:WR", onPressed: () => _secondaryState = SecondaryState.WR),
+        button("Secondary Chart:CCI", onPressed: () => _secondaryState = SecondaryState.CCI),
+        button("Secondary Chart:Hide", onPressed: () => _secondaryState = SecondaryState.NONE),
+        button(_volHidden ? "Show Vol" : "Hide Vol", onPressed: () => _volHidden = !_volHidden),
         button("Change Language", onPressed: () => isChinese = !isChinese),
-        button(_hideGrid ? "Show Grid" : "Hide Grid",
-            onPressed: () => _hideGrid = !_hideGrid),
+        button(_hideGrid ? "Show Grid" : "Hide Grid", onPressed: () => _hideGrid = !_hideGrid),
         button(_showNowPrice ? "Hide Now Price" : "Show Now Price",
             onPressed: () => _showNowPrice = !_showNowPrice),
         button("Customize UI", onPressed: () {
@@ -190,13 +180,13 @@ class _MyHomePageState extends State<MyHomePage> {
         }),
         button("Change PriceTextPaint",
             onPressed: () => setState(() {
-              _priceLeft = !_priceLeft;
-              if (_priceLeft) {
-                _verticalTextAlignment = VerticalTextAlignment.left;
-              } else {
-                _verticalTextAlignment = VerticalTextAlignment.right;
-              }
-            })),
+                  _priceLeft = !_priceLeft;
+                  if (_priceLeft) {
+                    _verticalTextAlignment = VerticalTextAlignment.left;
+                  } else {
+                    _verticalTextAlignment = VerticalTextAlignment.right;
+                  }
+                })),
       ],
     );
   }
